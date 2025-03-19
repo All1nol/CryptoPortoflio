@@ -1,0 +1,199 @@
+// Component Mixins
+// These mixins provide ready-made templates for common UI components
+
+// Standard card component
+@mixin card-template {
+  background-color: $card-bg;
+  border-radius: $border-radius;
+  box-shadow: $shadow;
+  padding: $spacer * 1.5;
+}
+
+// Interactive card that lifts on hover
+@mixin interactive-card {
+  @include card-template;
+  transition: $transition-base;
+  
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: $shadow-lg;
+  }
+}
+
+// Component section header
+@mixin section-header {
+  margin-bottom: $spacer * 1.5;
+  
+  h2, h3, h4 {
+    margin-bottom: $spacer * 0.5;
+  }
+  
+  p {
+    color: $text-secondary;
+    margin-bottom: 0;
+  }
+}
+
+// Form field styling
+@mixin form-field {
+  width: 100%;
+  padding: $spacer * 0.75;
+  border: 1px solid $border-color;
+  border-radius: $border-radius-sm;
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  transition: $transition-base;
+  
+  &:focus {
+    outline: none;
+    border-color: $primary-color;
+    box-shadow: 0 0 0 2px rgba($primary-color, 0.25);
+  }
+  
+  &:disabled {
+    background-color: $light-color;
+    cursor: not-allowed;
+  }
+}
+
+// Form group styling
+@mixin form-group {
+  margin-bottom: $spacer;
+  
+  label {
+    display: block;
+    margin-bottom: $spacer * 0.25;
+    font-weight: $font-weight-medium;
+  }
+  
+  input, select, textarea {
+    @include form-field;
+  }
+  
+  select {
+    appearance: none;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>');
+    background-repeat: no-repeat;
+    background-position: right $spacer * 0.75 center;
+    background-size: 16px;
+    padding-right: $spacer * 2.5;
+  }
+  
+  .error {
+    color: $danger-color;
+    font-size: $font-size-base * 0.875;
+    margin-top: $spacer * 0.25;
+  }
+}
+
+// Data table styling
+@mixin data-table {
+  width: 100%;
+  border-collapse: collapse;
+  
+  th, td {
+    padding: $spacer;
+    text-align: left;
+  }
+  
+  th {
+    background-color: $light-color;
+    font-weight: $font-weight-medium;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  
+  td {
+    border-bottom: 1px solid $border-color;
+  }
+  
+  tbody tr {
+    transition: $transition-base;
+    
+    &:hover {
+      background-color: rgba($primary-color, 0.05);
+    }
+    
+    &:last-child td {
+      border-bottom: none;
+    }
+  }
+}
+
+// Action buttons container
+@mixin action-buttons {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: $spacer;
+  
+  button {
+    padding: $spacer * 0.5 $spacer;
+    border-radius: $border-radius-sm;
+    font-weight: $font-weight-medium;
+    
+    + button {
+      margin-left: $spacer * 0.75;
+    }
+  }
+}
+
+// Dropdown/popup container
+@mixin dropdown-container {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: $card-bg;
+  border: 1px solid $border-color;
+  border-radius: $border-radius-sm;
+  box-shadow: $shadow;
+  z-index: 100;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+// Dropdown item styling
+@mixin dropdown-item {
+  padding: $spacer * 0.75;
+  border-bottom: 1px solid $border-color;
+  cursor: pointer;
+  transition: $transition-base;
+  
+  &:hover {
+    background-color: rgba($primary-color, 0.05);
+  }
+  
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+// Badge/pill styling
+@mixin badge($bg-color: $primary-color) {
+  display: inline-block;
+  padding: $spacer * 0.25 $spacer * 0.5;
+  border-radius: $border-radius-sm;
+  background-color: $bg-color;
+  color: white;
+  font-size: $font-size-base * 0.75;
+  font-weight: $font-weight-medium;
+}
+
+// Percentage indicator (positive/negative)
+@mixin percentage-indicator {
+  display: flex;
+  align-items: center;
+  
+  &--positive {
+    color: $success-color;
+  }
+  
+  &--negative {
+    color: $danger-color;
+  }
+  
+  .icon {
+    margin-right: $spacer * 0.25;
+  }
+} 

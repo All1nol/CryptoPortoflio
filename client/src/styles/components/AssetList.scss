@@ -1,0 +1,219 @@
+@import '../main.scss';
+
+.asset-list {
+  margin-bottom: $spacer * 2;
+  
+  &__header {
+    @include flex-between;
+    margin-bottom: $spacer;
+    
+    h2 {
+      margin-bottom: 0;
+    }
+  }
+  
+  &__table-container {
+    border-radius: $border-radius;
+    background-color: $card-bg;
+    box-shadow: $shadow;
+    overflow: hidden;
+  }
+  
+  &__table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    
+    th, td {
+      padding: $spacer;
+      text-align: left;
+      white-space: nowrap;
+      
+      &:first-child {
+        width: 25%;
+        min-width: 150px;
+      }
+      
+      &:last-child {
+        text-align: right;
+        width: 60px;
+      }
+    }
+    
+    th {
+      background-color: $light-color;
+      font-weight: $font-weight-medium;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    
+    td {
+      border-bottom: 1px solid $border-color;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    
+    tbody tr {
+      transition: $transition-base;
+      cursor: pointer;
+      
+      &:hover {
+        background-color: rgba($primary-color, 0.05);
+      }
+      
+      &:last-child td {
+        border-bottom: none;
+      }
+    }
+  }
+  
+  &__table-row {
+    width: 100%;
+  }
+  
+  &__asset-name {
+    display: flex;
+    align-items: center;
+    
+    .symbol {
+      margin-left: $spacer * 0.5;
+      color: $text-secondary;
+      font-size: $font-size-base * 0.875;
+    }
+  }
+  
+  &__percentage {
+    display: flex;
+    align-items: center;
+    
+    &--positive {
+      color: $success-color;
+    }
+    
+    &--negative {
+      color: $danger-color;
+    }
+    
+    .icon {
+      margin-right: $spacer * 0.25;
+    }
+  }
+  
+  &__portfolio-percentage {
+    width: 100%;
+    height: 4px;
+    background-color: $border-color;
+    border-radius: 2px;
+    overflow: hidden;
+    margin-top: $spacer * 0.25;
+    
+    .bar {
+      height: 100%;
+      background-color: $primary-color;
+    }
+  }
+  
+  &__empty {
+    text-align: center;
+    padding: $spacer * 2;
+    color: $text-secondary;
+  }
+  
+  &__actions {
+    button {
+      padding: $spacer * 0.5;
+      border-radius: $border-radius-sm;
+      background-color: transparent;
+      color: $danger-color;
+      transition: $transition-base;
+      
+      &:hover {
+        background-color: rgba($danger-color, 0.1);
+      }
+    }
+  }
+  
+  // Virtual list styling
+  .virtual-list {
+    width: 100%;
+    
+    &__row {
+      @include flex-between;
+      padding: $spacer;
+      border-bottom: 1px solid $border-color;
+      
+      &:hover {
+        background-color: rgba($primary-color, 0.05);
+      }
+    }
+  }
+  
+  // Responsive styles
+  @include respond-to(md) {
+    &__mobile-label {
+      display: none;
+    }
+  }
+  
+  @media (max-width: ($breakpoint-md - 1px)) {
+    &__table {
+      th:not(:first-child):not(:last-child) {
+        display: none;
+      }
+      
+      td:not(:first-child):not(:last-child) {
+        display: none;
+      }
+    }
+    
+    &__mobile-row {
+      display: flex;
+      flex-direction: column;
+      padding: $spacer;
+      border-bottom: 1px solid $border-color;
+      
+      &:last-child {
+        border-bottom: none;
+      }
+      
+      &-item {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: $spacer * 0.5;
+        
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+    
+    &__mobile-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: $spacer;
+    }
+    
+    &__mobile-details {
+      padding-left: $spacer * 0.5;
+    }
+    
+    &__actions-mobile {
+      padding: $spacer * 0.25;
+      border-radius: $border-radius-sm;
+      background-color: transparent;
+      color: $danger-color;
+      transition: $transition-base;
+      
+      &:hover {
+        background-color: rgba($danger-color, 0.1);
+      }
+    }
+    
+    &__mobile-label {
+      font-weight: $font-weight-medium;
+      margin-right: $spacer;
+    }
+  }
+} 

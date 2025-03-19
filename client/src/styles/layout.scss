@@ -1,0 +1,109 @@
+@import './main.scss';
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  background-color: $card-bg;
+  box-shadow: $shadow-sm;
+  padding: $spacer * 0.75 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  
+  &__container {
+    @include flex-between;
+  }
+  
+  &__logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: $text-color;
+    
+    img, svg {
+      height: 32px;
+      margin-right: $spacer * 0.5;
+    }
+    
+    h1 {
+      font-size: $font-size-base * 1.25;
+      font-weight: $font-weight-bold;
+      margin-bottom: 0;
+    }
+  }
+  
+  &__nav {
+    display: flex;
+    align-items: center;
+    
+    &-item {
+      margin-left: $spacer;
+      color: $text-secondary;
+      text-decoration: none;
+      font-weight: $font-weight-medium;
+      transition: $transition-base;
+      
+      &:hover {
+        color: $primary-color;
+      }
+      
+      &.active {
+        color: $primary-color;
+      }
+    }
+  }
+}
+
+.main {
+  flex: 1;
+  padding: $spacer * 2 0;
+}
+
+.footer {
+  background-color: $card-bg;
+  padding: $spacer 0;
+  margin-top: auto;
+  border-top: 1px solid $border-color;
+  
+  &__container {
+    @include flex-between;
+    
+    @media (max-width: ($breakpoint-md - 1px)) {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+  
+  &__copyright {
+    color: $text-secondary;
+    font-size: $font-size-base * 0.875;
+    
+    @media (max-width: ($breakpoint-md - 1px)) {
+      margin-bottom: $spacer * 0.5;
+    }
+  }
+  
+  &__links {
+    display: flex;
+    
+    @media (max-width: ($breakpoint-md - 1px)) {
+      justify-content: center;
+    }
+    
+    a {
+      color: $text-secondary;
+      font-size: $font-size-base * 0.875;
+      margin-left: $spacer;
+      transition: $transition-base;
+      
+      &:hover {
+        color: $primary-color;
+        text-decoration: none;
+      }
+    }
+  }
+} 

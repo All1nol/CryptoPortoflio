@@ -1,0 +1,123 @@
+@import '../main.scss';
+
+.portfolio-summary {
+  margin-bottom: $spacer * 2;
+  
+  &__header {
+    margin-bottom: $spacer;
+    
+    h2 {
+      margin-bottom: $spacer * 0.25;
+    }
+    
+    p {
+      color: $text-secondary;
+      margin-bottom: 0;
+    }
+  }
+  
+  &__cards {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: $spacer;
+    
+    @include respond-to(md) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    @include respond-to(lg) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  
+  &__card {
+    background-color: $card-bg;
+    border-radius: $border-radius;
+    box-shadow: $shadow;
+    padding: $spacer * 1.5;
+    transition: $transition-base;
+    
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: $shadow-lg;
+    }
+    
+    &-title {
+      color: $text-secondary;
+      font-size: $font-size-base * 0.875;
+      margin-bottom: $spacer * 0.5;
+      font-weight: $font-weight-medium;
+    }
+    
+    &-value {
+      font-size: $font-size-base * 1.5;
+      font-weight: $font-weight-bold;
+      margin-bottom: $spacer * 0.25;
+    }
+    
+    &-change {
+      display: flex;
+      align-items: center;
+      font-size: $font-size-base * 0.875;
+      
+      &--positive {
+        color: $success-color;
+      }
+      
+      &--negative {
+        color: $danger-color;
+      }
+      
+      .icon {
+        margin-right: $spacer * 0.25;
+      }
+    }
+  }
+  
+  &__chart {
+    margin-top: $spacer * 2;
+    background-color: $card-bg;
+    border-radius: $border-radius;
+    box-shadow: $shadow;
+    padding: $spacer * 1.5;
+    
+    &-header {
+      @include flex-between;
+      margin-bottom: $spacer;
+      
+      h3 {
+        margin-bottom: 0;
+      }
+      
+      .tabs {
+        display: flex;
+        
+        button {
+          padding: $spacer * 0.25 $spacer * 0.75;
+          background-color: transparent;
+          color: $text-secondary;
+          font-weight: $font-weight-medium;
+          border-radius: $border-radius-sm;
+          
+          &:hover {
+            background-color: rgba($primary-color, 0.05);
+          }
+          
+          &.active {
+            background-color: rgba($primary-color, 0.1);
+            color: $primary-color;
+          }
+          
+          &:not(:last-child) {
+            margin-right: $spacer * 0.25;
+          }
+        }
+      }
+    }
+    
+    &-container {
+      height: 300px;
+      position: relative;
+    }
+  }
+} 
